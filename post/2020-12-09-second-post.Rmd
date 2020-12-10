@@ -1,0 +1,29 @@
+---
+title: How Do Python and R Talk to Each Other?
+author: 'Wenxuan Zhou'
+date: '2020-12-09'
+slug: second-post
+categories: []
+tags: []
+description: ''
+---
+
+There's time when we want to use both Python and R at the same time to solve problems. How could we make it work so that Python and R could talk to each other? One way to address this issue is to use reticulate. Reticulate allows us to share things between Python and R. 
+
+For example, dataset imported through R could also be accessed by Python.
+
+Here's a R code chunk
+```{r}
+library(datasets)
+
+iris <- iris
+```
+Here's a Python code chunk
+```{python}
+r.iris
+```
+
+Notice the first row is labeled ## 0. Python could now read the dataset iris in R!
+
+This will also work in reverse with some minor changes! 
+

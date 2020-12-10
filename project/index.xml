@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Wenxuan Zhou</title>
+    <link>/project/</link>
+    <description>Recent content in Projects on Wenxuan Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Project 1</title>
+      <link>/project/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project1/</guid>
+      <description>Introduction The two datasets I chose was hate_crimes and immigration. The hate_crime dataset contains 13 variables: state (state name), state_abbrev (state abbreviation), median_house_inc (median household income in 2016), share_unemp_seas (share of the population that is unemployed in 2016), share_pop_metro (share of the population that lives in metropolitan areas in 2015), share_pop_hs (share of adults 25 and older with a high-school degree in 2009), share_non_citizen (share of the population that are not U.</description>
+    </item>
+    
+    <item>
+      <title>Project 2</title>
+      <link>/project/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project2/</guid>
+      <description>Wenxuan Zhou wz4388 Introduction The dataset I chose was Pima. This dataset consists of diebetes diagnosis of women (at least 21 years old) of Pima Indian heritage and their medical record data. The Pima dataset contains 8 variables: npreg (number of pregnancies), glu (plasma glucose concentration in an oral glucose tolerance test), bp (diastolic blood pressure in mmHg), skin (triceps skin fold thickness in mm), bmi (body mass index), ped (diabetes pedigree function), age (age in years), and type (Yes for diabetic and No for not diabetic).</description>
+    </item>
+    
+  </channel>
+</rss>

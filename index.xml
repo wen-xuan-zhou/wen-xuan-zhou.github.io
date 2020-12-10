@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wenxuan Zhou</title>
+    <link>/</link>
+    <description>Recent content on Wenxuan Zhou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Do Python and R Talk to Each Other?</title>
+      <link>/post/2020/12/09/second-post/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/12/09/second-post/</guid>
+      <description>There&#39;s time when we want to use both Python and R at the same time to solve problems. How could we make it work so that Python and R could talk to each other? One way to address this issue is to use reticulate. Reticulate allows us to share things between Python and R.
+For example, dataset imported through R could also be accessed by Python.
+Here&#39;s a R code chunk</description>
+    </item>
+    
+    <item>
+      <title>Regular Expression in Python</title>
+      <link>/post/2020/12/08/my-post/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/12/08/my-post/</guid>
+      <description>Regular expressions (regex) extract information from text by searching for matches of a specific pattern.
+Regex is very helpful for editing strings and cleaning data in Python. The same syntax could be applied to other programming languages such as JavaScript, Java, C / C++, Perl, Ruby, R, and many others.
+Below is a table containing the most used symbols in regex.
+Let&#39;s look at some examples.
+Here&#39;s a sentence: &amp;quot;We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314&#39;,&#39; is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task.</description>
+    </item>
+    
+    <item>
+      <title>Project 1</title>
+      <link>/project/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project1/</guid>
+      <description>Introduction The two datasets I chose was hate_crimes and immigration. The hate_crime dataset contains 13 variables: state (state name), state_abbrev (state abbreviation), median_house_inc (median household income in 2016), share_unemp_seas (share of the population that is unemployed in 2016), share_pop_metro (share of the population that lives in metropolitan areas in 2015), share_pop_hs (share of adults 25 and older with a high-school degree in 2009), share_non_citizen (share of the population that are not U.</description>
+    </item>
+    
+    <item>
+      <title>Project 2</title>
+      <link>/project/project2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/project/project2/</guid>
+      <description>Wenxuan Zhou wz4388 Introduction The dataset I chose was Pima. This dataset consists of diebetes diagnosis of women (at least 21 years old) of Pima Indian heritage and their medical record data. The Pima dataset contains 8 variables: npreg (number of pregnancies), glu (plasma glucose concentration in an oral glucose tolerance test), bp (diastolic blood pressure in mmHg), skin (triceps skin fold thickness in mm), bmi (body mass index), ped (diabetes pedigree function), age (age in years), and type (Yes for diabetic and No for not diabetic).</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/</guid>
+      <description> Check out some of my coding projects below:
+ Wrangling &amp;amp; Exploratory Data Analysis
+ Modeling, Inference, Prediction
+  -- </description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/resume/</guid>
+      <description>    </description>
+    </item>
+    
+  </channel>
+</rss>
