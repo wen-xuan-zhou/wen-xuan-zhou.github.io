@@ -14,7 +14,7 @@ Regex is very helpful for editing strings and cleaning data in Python. The same 
 
 Below is a table containing the most used symbols in regex. 
 
-![](https://regexusingpython.files.wordpress.com/2019/04/0-1.png)
+![](/post/2020-12-09-regex_files/regex.png)
 \n
 Let's look at some examples. 
 
