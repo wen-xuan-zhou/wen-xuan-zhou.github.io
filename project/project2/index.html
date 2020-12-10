@@ -384,7 +384,7 @@ Pima %&gt;% ggplot() + geom_point(aes(bmi_c, bp))</code></pre>
 })
 samp_distn %&gt;% t %&gt;% as.data.frame %&gt;% summarize_all(sd)</code></pre>
 <pre><code>##   (Intercept)     bmi_c  typeYes bmi_c:typeYes
-## 1   0.8193685 0.1276742 1.475877     0.2596275</code></pre>
+## 1   0.8236541 0.1236627 1.483247     0.2557719</code></pre>
 <p><em>All the SEs are similar. The original SEs are generally the lowest, and the robust SEs are generally the highest. </em></p>
 </div>
 <div id="logistic-regression-model-with-two-explanatory-variables" class="section level3">
@@ -538,8 +538,8 @@ for (i in 1:k) {
 }
 
 summarize_all(diags, mean)</code></pre>
-<pre><code>##        acc      sens      spec      ppv        f1      auc
-## 1 0.783066 0.5435348 0.8956894 0.704899 0.6072015 0.849768</code></pre>
+<pre><code>##        acc      sens      spec       ppv        f1       auc
+## 1 0.783066 0.5582849 0.8863765 0.6942659 0.5985639 0.8607347</code></pre>
 <pre class="r"><code>library(glmnet)
 Pima_resp &lt;- as.matrix(Pima$y)
 Pima_preds &lt;- model.matrix(y ~ npreg + bp + skin + bmi + age + 
@@ -550,14 +550,14 @@ lasso_fit &lt;- glmnet(Pima_preds, Pima_resp, family = &quot;binomial&quot;,
 coef(lasso_fit)</code></pre>
 <pre><code>## 8 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                       s0
-## (Intercept) -5.584739019
-## npreg        0.051399234
+## (Intercept) -5.854889993
+## npreg        0.057656178
 ## bp           .          
 ## skin         .          
-## bmi          0.033116604
-## age          0.006610991
-## ped          0.191750438
-## glu          0.026513151</code></pre>
+## bmi          0.036477347
+## age          0.007306832
+## ped          0.249320834
+## glu          0.027144380</code></pre>
 <pre class="r"><code>data1 &lt;- Pima[sample(nrow(Pima)), ]
 folds &lt;- cut(seq(1:nrow(Pima)), breaks = k, labels = F)
 
@@ -576,8 +576,8 @@ for (i in 1:k) {
 }
 
 summarize_all(diags, mean)</code></pre>
-<pre><code>##         acc      sens      spec       ppv        f1       auc
-## 1 0.7801248 0.5473327 0.8861207 0.7090132 0.6123431 0.8543019</code></pre>
+<pre><code>##         acc      sens     spec       ppv        f1       auc
+## 1 0.7891266 0.5655936 0.894333 0.7627806 0.6274617 0.8562986</code></pre>
 <p><em>The Accuracy is 0.795; the TPR is 0.578 (not good); the TNR is 0.901 (good); the PPV is 0.741; the AUC is 0.869 (good). AUC is the probability that a randomly selected person with diabetes has a higher predicted probability than a randomly selected person without diabetes, which is pretty good. The AUC for the 10-fold CV is slightly lower than the in-sample AUC. npreg, bmi, age, ped, and glu are retained. The AUC for the new model is better than the AUC for the previous model. </em></p>
 </div>
 </div>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Wenxuan Zhou" />
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../img/favicon.ico">
+    <title>Regular Expression in Python</title>
+    <meta name="generator" content="Hugo 0.79.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../../../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+  </head>
+
+  <body>
+    <div id="wrap">
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="../../../../../"><i class="fa fa-home"></i></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="../../../../../post/">BLOG</a></li>
+        
+        <li><a href="../../../../../projects/">PROJECTS</a></li>
+        
+        <li><a href="../../../../../resume/">RESUME</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="../../../../../post/2020/12/09/regex/">Regular Expression in Python</a></strong>
+          </h3>
+        </div>
+ 
+<div class="blog-title">
+          <h4>
+         December 9, 2020 
+            &nbsp;&nbsp;
+            
+          </h4>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+
+<p>Regular expressions (regex) extract information from text by searching for matches of a specific pattern.</p>
+<p>Regex is very helpful for editing strings and cleaning data in Python. The same syntax could be applied to other programming languages such as JavaScript, Java, C / C++, Perl, Ruby, R, and many others.</p>
+<p>Below is a table containing the most used symbols in regex.</p>
+<p><img src="../../../../../post/2020-12-09-regex_files/regex.png" /> Let's look at some examples.</p>
+<p>Here's a sentence: &quot;We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314',' is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task... we are joking.&quot; How could I extract the numbers into a list? Regex is one answer!</p>
+<pre class="python"><code>import re
+
+string1=&quot;We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314\&#39;,\&#39; is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task... we are joking.&quot;
+
+re.findall(r&quot;\d+&quot;,string1)</code></pre>
+<pre><code>## [&#39;12&#39;, &#39;47&#39;, &#39;48&#39;, &#39;189&#39;, &#39;2036&#39;, &#39;314&#39;, &#39;125&#39;, &#39;789&#39;, &#39;1450&#39;, &#39;564&#39;, &#39;90456&#39;, &#39;7890&#39;]</code></pre>
+<p>First, I need to import the re library. re.findall() returns all non-overlapping matches of a pattern in string, as a list of strings. The string is scanned left-to-right, and matches are returned in the order found. If one or more groups are present in the pattern, it returns a list of groups. For the regex, I write '\d+', which extracts the numbers with one or more digits in the string.</p>
+<p>Let's look at another example.</p>
+<p>Extract all the url links in the following string: &quot;<a href="http://www.classmates.com/go/e/200988231/CC123101BT/CM00" class="uri">http://www.classmates.com/go/e/200988231/CC123101BT/CM00</a> <a href="http://graphics.classmates.com/graphics/spacer.gif" class="uri">http://graphics.classmates.com/graphics/spacer.gif</a> &lt;<a href="http://graphics.classmates.com/graphics/sp" class="uri">http://graphics.classmates.com/graphics/sp</a><br />
+You have received this email because the requester specified you as their Manager. Please click <a href="http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&amp;Page=Approval" class="uri">http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&amp;Page=Approval</a> to review and act upon this request. Request ID : 000000000053239 Request Create Date<br />
+ronOnline. The following User ID and Password will give you access to live prices on the web-site <a href="http://www.enrononline.com" class="uri">http://www.enrononline.com</a>. User ID: ADM40601 Password: WELCOME! (note these are case sensitive) Please keep your User I&quot;.</p>
+<pre class="python"><code>string2=&quot;&lt;http://www.classmates.com/go/e/200988231/CC123101BT/CM00&gt;  &lt;http://graphics.classmates.com/graphics/spacer.gif&gt;  &lt;http://graphics.classmates.com/graphics/sp \
+You have received this email because the requester specified you as their Manager. Please click http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&amp;Page=Approval to review and act upon this request.     Request ID          : 000000000053239 Request Create Date\
+ronOnline.   The following User ID and Password will give you access to live prices on the web-site http://www.enrononline.com.  User ID: ADM40601 Password: WELCOME!   (note these are case sensitive)    Please keep your User I&quot;
+
+re.findall(r&quot;http://[^ \t\n\r\f\v&gt;]+&quot;,string2)</code></pre>
+<pre><code>## [&#39;http://www.classmates.com/go/e/200988231/CC123101BT/CM00&#39;, &#39;http://graphics.classmates.com/graphics/spacer.gif&#39;, &#39;http://graphics.classmates.com/graphics/sp&#39;, &#39;http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&amp;Page=Approval&#39;, &#39;http://www.enrononline.com.&#39;]</code></pre>
+<p>This regex helps me to find all the url links start with the pattern &quot;<a href="http://" class="uri">http://</a>&quot; followed by one or more characters that are non-whitespace and are not &quot;&gt;&quot;. This is an example that shows regex is very useful in extracting important information in a long text!</p>
+
+            
+        <hr>         <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+              </div> 
+            </div>
+          </div>
+
+   <hr>  <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = '';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div> 
+        </div>
+      </div>
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="../../../../../js/docs.min.js"></script>
+<script src="../../../../../js/main.js"></script>
+
+<script src="../../../../../js/ie10-viewport-bug-workaround.js"></script>
+
+
+    
+  </body>
+</html>

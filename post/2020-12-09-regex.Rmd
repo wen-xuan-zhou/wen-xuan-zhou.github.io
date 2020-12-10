@@ -1,0 +1,46 @@
+---
+title: Regular Expression in Python
+author: 'Wenxuan Zhou'
+date: '2020-12-09'
+slug: regex
+categories: []
+tags: []
+description: ''
+---
+
+Regular expressions (regex) extract information from text by searching for matches of a specific pattern.
+
+Regex is very helpful for editing strings and cleaning data in Python. The same syntax could be applied to other programming languages such as JavaScript, Java, C / C++, Perl, Ruby, R, and many others. 
+
+Below is a table containing the most used symbols in regex. 
+
+![](/post/2020-12-09-regex_files/regex.png)
+\n
+Let's look at some examples. 
+
+Here's a sentence: "We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314\',\' is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task... we are joking." How could I extract the numbers into a list? Regex is one answer!
+
+```{python}
+import re
+
+string1="We have to extract these numbers 12, 47, 48 The integers numbers are also interesting: 189 2036 314\',\' is a separator, so please extract these numbers 125,789,1450 and also these 564,90456 We like to offer you 7890$ per month in order to complete this task... we are joking."
+
+re.findall(r"\d+",string1)
+```
+
+First, I need to import the re library. re.findall() returns all non-overlapping matches of a pattern in string, as a list of strings. The string is scanned left-to-right, and matches are returned in the order found. If one or more groups are present in the pattern, it returns a list of groups. For the regex, I write '\\d+', which extracts the numbers with one or more digits in the string. 
+
+Let's look at another example. 
+
+Extract all the url links in the following string: "<http://www.classmates.com/go/e/200988231/CC123101BT/CM00>  <http://graphics.classmates.com/graphics/spacer.gif>  <http://graphics.classmates.com/graphics/sp \
+You have received this email because the requester specified you as their Manager. Please click http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&Page=Approval to review and act upon this request.     Request ID          : 000000000053239 Request Create Date\
+ronOnline.   The following User ID and Password will give you access to live prices on the web-site http://www.enrononline.com.  User ID: ADM40601 Password: WELCOME!   (note these are case sensitive)    Please keep your User I". 
+
+```{python}
+string2="<http://www.classmates.com/go/e/200988231/CC123101BT/CM00>  <http://graphics.classmates.com/graphics/spacer.gif>  <http://graphics.classmates.com/graphics/sp \
+You have received this email because the requester specified you as their Manager. Please click http://itcapps.corp.enron.com/srrs/auth/emailLink.asp?ID=000000000053239&Page=Approval to review and act upon this request.     Request ID          : 000000000053239 Request Create Date\
+ronOnline.   The following User ID and Password will give you access to live prices on the web-site http://www.enrononline.com.  User ID: ADM40601 Password: WELCOME!   (note these are case sensitive)    Please keep your User I"
+
+re.findall(r"http://[^ \t\n\r\f\v>]+",string2)
+```
+This regex helps me to find all the url links start with the pattern "http://" followed by one or more characters that are non-whitespace and are not ">". This is an example that shows regex is very useful in extracting important information in a long text!

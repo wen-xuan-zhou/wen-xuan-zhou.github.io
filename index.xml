@@ -20,10 +20,10 @@ Here&#39;s a R code chunk</description>
     
     <item>
       <title>Regular Expression in Python</title>
-      <link>/post/2020/12/08/my-post/</link>
-      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      <link>/post/2020/12/09/regex/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020/12/08/my-post/</guid>
+      <guid>/post/2020/12/09/regex/</guid>
       <description>Regular expressions (regex) extract information from text by searching for matches of a specific pattern.
 Regex is very helpful for editing strings and cleaning data in Python. The same syntax could be applied to other programming languages such as JavaScript, Java, C / C++, Perl, Ruby, R, and many others.
 Below is a table containing the most used symbols in regex.
