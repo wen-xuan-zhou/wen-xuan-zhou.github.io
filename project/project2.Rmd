@@ -123,13 +123,7 @@ samp_distn %>% t %>% as.data.frame %>% summarize_all(sd)
 
 ### Logistic Regression Model with Two Explanatory Variables
 
-Fit a logistic regression model predicting a binary variable (if you don’t have one, make/get one) from at least two explanatory variables (interaction not necessary).
-
-Interpret coefficient estimates in context (10)
-Report a confusion matrix for your logistic regression (2)
-Compute and discuss the Accuracy, Sensitivity (TPR), Specificity (TNR), Precision (PPV), and AUC of your model (5)
-Using ggplot, make a density plot of the log-odds (logit) colored/grouped by your binary outcome variable (3)
-Generate an ROC curve (plot) and calculate AUC (either manually or with a package); interpret (5)
+Fit a logistic regression model predicting a binary variable from at least two explanatory variables (interaction not necessary).
 
 ```{r}
 Pima1 <- Pima %>% mutate(y=ifelse(type=="Yes",1,0)) %>% select(npreg,glu,bp,skin,bmi,ped,age,y)
@@ -238,4 +232,4 @@ diags<-rbind(diags,class_diag(probs,truth))
 summarize_all(diags,mean)
 ```
 
-*The Accuracy is 0.795; the TPR is 0.578 (not good); the TNR is 0.901 (good); the PPV is 0.741; the AUC is 0.869 (good). AUC is the probability that a randomly selected person with diabetes has a higher predicted probability than a randomly selected person without diabetes, which is pretty good. The AUC for the 10-fold CV is slightly lower than the in-sample AUC. npreg, bmi, age, ped, and glu are retained. The AUC for the new model is better than the AUC for the previous model. *
+*The Accuracy is around 0.8; the TPR is around 0.5 (not good); the TNR is around 0.9 (good); the PPV is around 0.1; the AUC is around 0.8 (good). AUC is the probability that a randomly selected person with diabetes has a higher predicted probability than a randomly selected person without diabetes, which is pretty good. The AUC for the 10-fold CV is slightly lower than the in-sample AUC. npreg, bmi, age, ped, and glu are retained. The AUC for the new model is better than the AUC for the previous model. *

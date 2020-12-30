@@ -384,13 +384,12 @@ Pima %&gt;% ggplot() + geom_point(aes(bmi_c, bp))</code></pre>
 })
 samp_distn %&gt;% t %&gt;% as.data.frame %&gt;% summarize_all(sd)</code></pre>
 <pre><code>##   (Intercept)     bmi_c  typeYes bmi_c:typeYes
-## 1   0.8236541 0.1236627 1.483247     0.2557719</code></pre>
+## 1   0.8254265 0.1237479 1.464258     0.2568769</code></pre>
 <p><em>All the SEs are similar. The original SEs are generally the lowest, and the robust SEs are generally the highest. </em></p>
 </div>
 <div id="logistic-regression-model-with-two-explanatory-variables" class="section level3">
 <h3>Logistic Regression Model with Two Explanatory Variables</h3>
-<p>Fit a logistic regression model predicting a binary variable (if you don’t have one, make/get one) from at least two explanatory variables (interaction not necessary).</p>
-<p>Interpret coefficient estimates in context (10) Report a confusion matrix for your logistic regression (2) Compute and discuss the Accuracy, Sensitivity (TPR), Specificity (TNR), Precision (PPV), and AUC of your model (5) Using ggplot, make a density plot of the log-odds (logit) colored/grouped by your binary outcome variable (3) Generate an ROC curve (plot) and calculate AUC (either manually or with a package); interpret (5)</p>
+<p>Fit a logistic regression model predicting a binary variable from at least two explanatory variables (interaction not necessary).</p>
 <pre class="r"><code>Pima1 &lt;- Pima %&gt;% mutate(y = ifelse(type == &quot;Yes&quot;, 1, 0)) %&gt;% 
     select(npreg, glu, bp, skin, bmi, ped, age, y)
 fit &lt;- glm(y ~ ped + glu, data = Pima1, family = &quot;binomial&quot;)
@@ -538,8 +537,8 @@ for (i in 1:k) {
 }
 
 summarize_all(diags, mean)</code></pre>
-<pre><code>##        acc      sens      spec       ppv        f1       auc
-## 1 0.783066 0.5582849 0.8863765 0.6942659 0.5985639 0.8607347</code></pre>
+<pre><code>##         acc      sens      spec       ppv        f1       auc
+## 1 0.7777184 0.5590385 0.8880627 0.7230556 0.6141441 0.8643284</code></pre>
 <pre class="r"><code>library(glmnet)
 Pima_resp &lt;- as.matrix(Pima$y)
 Pima_preds &lt;- model.matrix(y ~ npreg + bp + skin + bmi + age + 
@@ -550,14 +549,14 @@ lasso_fit &lt;- glmnet(Pima_preds, Pima_resp, family = &quot;binomial&quot;,
 coef(lasso_fit)</code></pre>
 <pre><code>## 8 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
 ##                       s0
-## (Intercept) -5.854889993
-## npreg        0.057656178
+## (Intercept) -6.356345595
+## npreg        0.068748270
 ## bp           .          
-## skin         .          
-## bmi          0.036477347
-## age          0.007306832
-## ped          0.249320834
-## glu          0.027144380</code></pre>
+## skin         0.001379800
+## bmi          0.041537213
+## age          0.008531297
+## ped          0.356012760
+## glu          0.028330459</code></pre>
 <pre class="r"><code>data1 &lt;- Pima[sample(nrow(Pima)), ]
 folds &lt;- cut(seq(1:nrow(Pima)), breaks = k, labels = F)
 
@@ -576,9 +575,9 @@ for (i in 1:k) {
 }
 
 summarize_all(diags, mean)</code></pre>
-<pre><code>##         acc      sens     spec       ppv        f1       auc
-## 1 0.7891266 0.5655936 0.894333 0.7627806 0.6274617 0.8562986</code></pre>
-<p><em>The Accuracy is 0.795; the TPR is 0.578 (not good); the TNR is 0.901 (good); the PPV is 0.741; the AUC is 0.869 (good). AUC is the probability that a randomly selected person with diabetes has a higher predicted probability than a randomly selected person without diabetes, which is pretty good. The AUC for the 10-fold CV is slightly lower than the in-sample AUC. npreg, bmi, age, ped, and glu are retained. The AUC for the new model is better than the AUC for the previous model. </em></p>
+<pre><code>##         acc      sens      spec       ppv        f1     auc
+## 1 0.7946524 0.5889957 0.8960794 0.7312987 0.6409266 0.85141</code></pre>
+<p><em>The Accuracy is around 0.8; the TPR is around 0.5 (not good); the TNR is around 0.9 (good); the PPV is around 0.1; the AUC is around 0.8 (good). AUC is the probability that a randomly selected person with diabetes has a higher predicted probability than a randomly selected person without diabetes, which is pretty good. The AUC for the 10-fold CV is slightly lower than the in-sample AUC. npreg, bmi, age, ped, and glu are retained. The AUC for the new model is better than the AUC for the previous model. </em></p>
 </div>
 </div>
 
